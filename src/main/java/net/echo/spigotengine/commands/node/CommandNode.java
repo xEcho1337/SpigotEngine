@@ -117,7 +117,7 @@ public class CommandNode {
                     return;
                 }
 
-                if (this.parameters.size() > 0) {
+                if (!this.parameters.isEmpty()) {
                     ArgumentNode lastArgument = this.parameters.get(this.parameters.size() - 1);
                     if (lastArgument.isConcated() && actualLength > requiredParameters) {
                         probability.addAndGet(125);
@@ -125,7 +125,7 @@ public class CommandNode {
                     }
                 }
 
-                if (!tabbed || splitName.length > 1 || parameters.size() > 0)
+                if (!tabbed || splitName.length > 1 || !parameters.isEmpty())
                     probability.addAndGet(50);
 
                 if (actualLength > requiredParameters)
@@ -137,7 +137,7 @@ public class CommandNode {
                 if (!(sender instanceof Player) && playerOnly)
                     probability.addAndGet(-15);
 
-                if (!permission.equals("") && !sender.hasPermission(permission))
+                if (!permission.isEmpty() && !sender.hasPermission(permission))
                     probability.addAndGet(-15);
 
                 return;
