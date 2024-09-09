@@ -1,0 +1,3 @@
+name: Summer
+version: '${version}'
+main: net.echo.summer.Summer
