@@ -4,7 +4,7 @@ import net.echo.spigotengine.commandsv2.duration.Duration;
 import net.echo.spigotengine.commandsv2.processor.Processor;
 import org.bukkit.command.CommandSender;
 
-public class DurationProcessor implements Processor<Duration> {
+public class DurationProcessor extends Processor<Duration> {
 
     @Override
     public Duration process(CommandSender sender, String supplied) {

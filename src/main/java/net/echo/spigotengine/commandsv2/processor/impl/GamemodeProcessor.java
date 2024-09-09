@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class GamemodeProcessor implements Processor<GameMode> {
+public class GamemodeProcessor extends Processor<GameMode> {
 
     public GameMode process(CommandSender sender, String supplied) {
         if (supplied.equalsIgnoreCase("survival") || supplied.equalsIgnoreCase("s") || supplied.equals("0")) {

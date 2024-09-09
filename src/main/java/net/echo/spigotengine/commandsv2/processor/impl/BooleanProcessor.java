@@ -6,7 +6,7 @@ import org.bukkit.command.CommandSender;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BooleanProcessor implements Processor<Boolean> {
+public class BooleanProcessor extends Processor<Boolean> {
 
     private final Map<String, Boolean> values = new HashMap<>();
 

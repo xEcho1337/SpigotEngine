@@ -12,7 +12,6 @@ public abstract class Processor<T> {
 
     private final Class<?> type;
 
-
     @SneakyThrows
     public Processor() {
         // can cause ClassNotFoundException with Loader based plugins
