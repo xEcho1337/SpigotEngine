@@ -14,8 +14,14 @@ public class ObesoCommand {
 
     }
 
-    @SubCommand(aliases = "obeso", permission = "boobsmc.obeso")
-    public void onObeso(Player player) {
+    @SubCommand(aliases = "poop", permission = "boobsmc.obeso")
+    public void onPoop(Player player, Statistic statistic) {
+    }
 
+    public enum Statistic {
+
+        KILLS,
+        DEATHS,
+        STREAK
     }
 }
