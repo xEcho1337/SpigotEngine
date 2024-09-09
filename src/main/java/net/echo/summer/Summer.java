@@ -1,18 +1,33 @@
 package net.echo.summer;
 
-import org.bukkit.plugin.java.JavaPlugin;
+import net.echo.summer.boot.SummerLoader;
+import net.echo.summer.boot.SummerPlugin;
+import net.echo.summer.data.UserData;
+import net.echo.summer.data.loader.DataLoader;
 
-public final class Summer extends JavaPlugin {
+public final class Summer extends SummerPlugin<UserData> {
 
-    @Override
-    public void onEnable() {
-
+    public Summer(SummerLoader<?> loader) {
+        super(loader);
     }
 
     @Override
-    public void onDisable() {
-        // Plugin shutdown logic
+    public void enable() {
+        super.enable();
     }
 
+    @Override
+    public void disable() {
+        super.disable();
+    }
 
+    @Override
+    public void load() {
+        super.load();
+    }
+
+    @Override
+    public DataLoader<UserData> getDataLoader() {
+        return null;
+    }
 }

@@ -1,5 +1,11 @@
 package net.echo.summer.tasks;
 
+/**
+ * An annotation containing various information about a task.
+ *
+ * @author echo
+ * @since 1.0
+ */
 public @interface Task {
 
     /**
