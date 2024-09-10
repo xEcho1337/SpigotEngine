@@ -48,10 +48,10 @@ public class Initializer<T> {
             } catch (NoSuchMethodException e) {
                 // OK, this class has a constructor, it's surely an instance
                 try {
-                    Constructor<?> kitPvPConstructor = clazz.getDeclaredConstructor(plugin.getClass());
-                    kitPvPConstructor.setAccessible(true);
+                    Constructor<?> constructor = clazz.getDeclaredConstructor(plugin.getClass());
+                    constructor.setAccessible(true);
 
-                    T instance = (T) kitPvPConstructor.newInstance(plugin);
+                    T instance = (T) constructor.newInstance(plugin);
                     consumer.accept(instance);
                 } catch (NoSuchMethodException | IllegalAccessException | InstantiationException |
                          InvocationTargetException ex) {
