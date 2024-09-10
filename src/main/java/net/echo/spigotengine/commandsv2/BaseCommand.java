@@ -52,7 +52,7 @@ public class BaseCommand<P extends SpigotPlugin<?>> {
             }
         }
 
-        new BukkitCommand(this.commandData);
+        new BukkitCommand(this.commandData, plugin);
     }
 
     public Method getSubCommand(String name) {

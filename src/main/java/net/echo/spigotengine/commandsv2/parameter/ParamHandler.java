@@ -33,15 +33,11 @@ public class ParamHandler {
         processors.put(processor.getType(), processor);
     }
 
-    public static <T> T process(CommandSender sender, String input) {
-        for (Map.Entry<Class<?>, Processor<?>> entry : processors.entrySet()) {
-            try {
-                return (T) entry.getValue().process(sender, input);
-            } catch (Exception e) {
-                // Ignore
-            }
-        }
+    public static <T> T process(CommandSender sender, String input, Class<?> type) {
+        Processor<?> processor = processors.get(type);
 
-        return null;
+        if (processor == null) return null;
+
+        return (T) processor.process(sender, input);
     }
 }

@@ -1,9 +1,12 @@
 package net.echo.spigotengine.boot;
 
+import net.echo.spigotengine.commandsv2.CommandHandler;
 import net.echo.spigotengine.data.UserData;
 import net.echo.spigotengine.data.container.DataContainer;
 import net.echo.spigotengine.data.listeners.AccessListener;
 import net.echo.spigotengine.data.loader.DataLoader;
+import net.echo.spigotengine.listener.ListenerHandler;
+import net.echo.spigotengine.tasks.TaskHandler;
 import org.bukkit.Bukkit;
 
 /**
@@ -19,6 +22,10 @@ public abstract class SpigotPlugin<D extends UserData> {
 
     private final PluginLoader<?> pluginLoader;
     private DataContainer<D> container;
+
+    protected final CommandHandler<?> commandHandler = CommandHandler.create(this);
+    protected final ListenerHandler<?> listenerHandler = ListenerHandler.create(this);
+    protected final TaskHandler<?> taskHandler = TaskHandler.create(this);
 
     public SpigotPlugin(PluginLoader<?> pluginLoader) {
         this.pluginLoader = pluginLoader;
@@ -58,8 +65,8 @@ public abstract class SpigotPlugin<D extends UserData> {
 
         Bukkit.getPluginManager().registerEvents(new AccessListener(this), pluginLoader);
 
-        loadListeners();
-        loadCommands();
+        registerListeners();
+        registerCommands();
     }
 
     /**
@@ -75,19 +82,46 @@ public abstract class SpigotPlugin<D extends UserData> {
     public abstract DataLoader<D> getDataLoader();
 
     /**
-     * Loads all the listeners of the plugin.
+     * Registers all the listeners of the plugin.
      */
-    public abstract void loadListeners();
+    public abstract void registerListeners();
 
     /**
-     * Loads all the commands of the plugin.
+     * Registers all the commands of the plugin.
      */
-    public abstract void loadCommands();
+    public abstract void registerCommands();
+
+    /**
+     * Registers all the tasks of the plugin.
+     */
+    public abstract void registerTasks();
 
     /**
      * Returns the {@link DataContainer} for the plugin
      */
     public DataContainer<D> getContainer() {
         return container;
+    }
+
+    /**
+     * Returns the default command handler for this plugin.
+     */
+    public CommandHandler<?> getCommandHandler() {
+        return commandHandler;
+    }
+
+    /**
+     * Returns the default listener handler for this plugin.
+     */
+
+    public ListenerHandler<?> getListenerHandler() {
+        return listenerHandler;
+    }
+
+    /**
+     * Returns the default task handler for this plugin.
+     */
+    public TaskHandler<?> getTaskHandler() {
+        return taskHandler;
     }
 }

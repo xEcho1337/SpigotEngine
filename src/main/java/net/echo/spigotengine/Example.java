@@ -17,12 +17,17 @@ public final class Example extends SpigotPlugin<UserData> {
     }
 
     @Override
-    public void loadListeners() {
-
+    public void registerListeners() {
+        listenerHandler.registerAll("net.echo.listeners");
     }
 
     @Override
-    public void loadCommands() {
+    public void registerCommands() {
+        commandHandler.registerAll("net.echo.commands");
+    }
 
+    @Override
+    public void registerTasks() {
+        taskHandler.registerAll("net.echo.tasks");
     }
 }

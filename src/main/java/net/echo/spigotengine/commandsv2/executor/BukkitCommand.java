@@ -1,6 +1,7 @@
 package net.echo.spigotengine.commandsv2.executor;
 
 import net.echo.spigotengine.ExampleLoader;
+import net.echo.spigotengine.boot.SpigotPlugin;
 import net.echo.spigotengine.commandsv2.BaseCommand;
 import net.echo.spigotengine.commandsv2.CommandHandler;
 import net.echo.spigotengine.commandsv2.annotations.CommandData;
@@ -19,7 +20,7 @@ import java.util.List;
 
 public class BukkitCommand extends Command {
 
-    public BukkitCommand(CommandData data) {
+    public BukkitCommand(CommandData data, SpigotPlugin<?> plugin) {
         super(data.aliases()[0]);
 
         try {
@@ -29,7 +30,7 @@ public class BukkitCommand extends Command {
             commandMap.setAccessible(true);
 
             CommandMap wrapped = (CommandMap) commandMap.get(Bukkit.getServer());
-            wrapped.register(ExampleLoader.getPlugin(ExampleLoader.class).getName(), this);
+            wrapped.register(plugin.getLoader().getName(), this);
         } catch (Exception e) {
             e.printStackTrace(System.err);
         }
@@ -83,9 +84,9 @@ public class BukkitCommand extends Command {
             for (int i = 1; i < copyArgs.length; i++) {
                 Parameter parameter = params[i];
 
-                // TODO: CHeck for annotation
+                // TODO: Check for annotation
 
-                Object output = ParamHandler.process(sender, copyArgs[i]);
+                Object output = ParamHandler.process(sender, copyArgs[i], parameter.getType());
 
                 if (output == null || parameter.getType().isAssignableFrom(output.getClass())) continue; // TODO: Usage message and error handling
 
