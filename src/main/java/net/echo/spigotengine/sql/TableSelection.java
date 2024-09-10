@@ -1,8 +1,8 @@
-package net.echo.spigotengine.database;
+package net.echo.spigotengine.sql;
 
-import net.echo.spigotengine.database.statement.InsertStatement;
-import net.echo.spigotengine.database.statement.SelectStatement;
-import net.echo.spigotengine.database.statement.UpdateStatement;
+import net.echo.spigotengine.sql.statement.InsertStatement;
+import net.echo.spigotengine.sql.statement.SelectStatement;
+import net.echo.spigotengine.sql.statement.UpdateStatement;
 
 public record TableSelection(String table) {
 

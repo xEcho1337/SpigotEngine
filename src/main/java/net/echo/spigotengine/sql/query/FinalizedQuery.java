@@ -1,4 +1,4 @@
-package net.echo.spigotengine.database.query;
+package net.echo.spigotengine.sql.query;
 
 import java.sql.Connection;
 import java.sql.Statement;

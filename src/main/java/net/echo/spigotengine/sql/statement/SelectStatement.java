@@ -1,7 +1,7 @@
-package net.echo.spigotengine.database.statement;
+package net.echo.spigotengine.sql.statement;
 
-import net.echo.spigotengine.database.AbstractStatement;
-import net.echo.spigotengine.database.TableSelection;
+import net.echo.spigotengine.sql.AbstractStatement;
+import net.echo.spigotengine.sql.TableSelection;
 
 import java.util.ArrayList;
 import java.util.List;

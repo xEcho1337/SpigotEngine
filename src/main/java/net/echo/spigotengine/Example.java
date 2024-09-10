@@ -4,7 +4,10 @@ import net.echo.spigotengine.boot.PluginLoader;
 import net.echo.spigotengine.boot.SpigotPlugin;
 import net.echo.spigotengine.data.UserData;
 import net.echo.spigotengine.data.loader.DataLoader;
-import net.echo.spigotengine.database.QueryBuilder;
+import net.echo.spigotengine.tasks.Task;
+import net.echo.spigotengine.test.SaveTask;
+
+import java.lang.annotation.Annotation;
 
 public final class Example extends SpigotPlugin<UserData> {
 
@@ -37,5 +40,6 @@ public final class Example extends SpigotPlugin<UserData> {
     @Override
     public void registerTasks() {
         taskHandler.registerAll("net.echo.tasks");
+        taskHandler.submit(new SaveTask(), 0);
     }
 }

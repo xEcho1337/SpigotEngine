@@ -1,4 +1,4 @@
-package net.echo.spigotengine.database;
+package net.echo.spigotengine.sql;
 
 public class QueryBuilder {
 
