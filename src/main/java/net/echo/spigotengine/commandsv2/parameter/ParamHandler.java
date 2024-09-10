@@ -9,7 +9,6 @@ import java.util.Map;
 
 public class ParamHandler {
 
-    // TODO: Fix generics
     private static final Map<Class<?>, Processor<?>> processors = new HashMap<>();
 
     static {
@@ -31,6 +30,7 @@ public class ParamHandler {
         processors.put(processor.getType(), processor);
     }
 
+    @SuppressWarnings("unchecked")
     public static <T> T process(CommandSender sender, String input, Class<?> type) {
         Processor<?> processor = processors.get(type);
 

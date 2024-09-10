@@ -1,6 +1,5 @@
 package net.echo.spigotengine.database;
 
-import com.google.common.base.Preconditions;
 import net.echo.spigotengine.database.functions.StatementConsumer;
 
 import java.sql.*;
@@ -15,38 +14,24 @@ import java.util.concurrent.Executor;
  */
 public abstract class MySQLDatabase {
 
-    private String url;
-
-    public MySQLDatabase() {
-    }
-
-    public MySQLDatabase(String url) {
-        this.url = url;
-        connect();
-    }
-
     public abstract Executor getExecutor();
+
+    public abstract String getHost();
+
+    public abstract int getPort();
+
+    public abstract String getDatabase();
 
     public abstract String getUser();
 
     public abstract String getPassword();
 
-    public Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(url, getUser(), getPassword());
-    }
-
     public String getUrl() {
-        return url;
+        return "jdbc:mysql://" + getHost() + ":" + getPort() + "/" + getDatabase();
     }
 
-    public void connect() {
-        Preconditions.checkNotNull(url, "Select an URL before connecting.");
-
-        try {
-            getConnection();
-        } catch (SQLException e) {
-            e.printStackTrace(System.err);
-        }
+    public Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(getUrl(), getUser(), getPassword());
     }
 
     public <T> T execute(String query, StatementConsumer<T> function) {
