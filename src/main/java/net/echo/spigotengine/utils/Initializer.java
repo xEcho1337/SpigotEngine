@@ -45,7 +45,7 @@ public class Initializer<T> {
 
                 T instance = (T) noArgConstructor.newInstance();
                 consumer.accept(instance);
-            } catch (NoSuchMethodException e) {
+            } catch (NoSuchMethodException ignored) {
                 // OK, this class has a constructor, it's surely an instance
                 try {
                     Constructor<?> constructor = clazz.getDeclaredConstructor(plugin.getClass());
@@ -53,13 +53,10 @@ public class Initializer<T> {
 
                     T instance = (T) constructor.newInstance(plugin);
                     consumer.accept(instance);
-                } catch (NoSuchMethodException | IllegalAccessException | InstantiationException |
-                         InvocationTargetException ex) {
-                    ex.printStackTrace(System.err);
+                } catch (Exception ignored1) {
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace(System.err);
+        } catch (Exception ignored) {
         }
     }
 }

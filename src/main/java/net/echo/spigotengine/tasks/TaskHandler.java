@@ -1,9 +1,12 @@
 package net.echo.spigotengine.tasks;
 
+import com.google.common.base.Preconditions;
 import net.echo.spigotengine.boot.SpigotPlugin;
 import net.echo.spigotengine.utils.Initializer;
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitScheduler;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 public class TaskHandler<P extends SpigotPlugin<?>> {
 
@@ -22,7 +25,19 @@ public class TaskHandler<P extends SpigotPlugin<?>> {
         Initializer.create(Runnable.class).consumeAll(plugin, path, this::register);
     }
 
-    public <T extends Runnable> void register(T task) {
+    public <T extends Runnable> void submit(@NotNull T task, long delay) {
+        Preconditions.checkNotNull(task);
+        executor.runTaskLater(plugin.getLoader(), task, delay);
+    }
+
+    public <T extends Runnable> void submitAsync(@NotNull T task, long delay) {
+        Preconditions.checkNotNull(task);
+        executor.runTaskLaterAsynchronously(plugin.getLoader(), task, delay);
+    }
+
+    public <T extends Runnable> void register(@NotNull T task) {
+        Preconditions.checkNotNull(task);
+
         if (!task.getClass().isAnnotationPresent(Task.class)) {
             throw new IllegalStateException(task.getClass().getSimpleName() + " does not have the @Task annotation");
         }
