@@ -3,7 +3,7 @@ package net.echo.spigotengine.data.listeners;
 import net.echo.spigotengine.boot.SpigotPlugin;
 import net.echo.spigotengine.data.LoadResult;
 import net.echo.spigotengine.data.UserData;
-import net.echo.spigotengine.listener.BetterListener;
+import net.echo.spigotengine.listener.impl.BetterListener;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
@@ -16,7 +16,7 @@ public class AccessListener extends BetterListener<SpigotPlugin<?>> {
         super(plugin);
     }
 
-    @EventHandler (priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onAsyncPreLogin(AsyncPlayerPreLoginEvent event) {
         if (event.getLoginResult() != AsyncPlayerPreLoginEvent.Result.ALLOWED) return;
 
@@ -27,7 +27,7 @@ public class AccessListener extends BetterListener<SpigotPlugin<?>> {
         }
     }
 
-    @EventHandler (priority = EventPriority.HIGHEST)
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onPreLogin(PlayerLoginEvent event) {
         UserData data = plugin.getContainer().get(event.getPlayer());
 

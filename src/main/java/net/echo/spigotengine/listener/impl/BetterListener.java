@@ -1,4 +1,4 @@
-package net.echo.spigotengine.listener;
+package net.echo.spigotengine.listener.impl;
 
 import net.echo.spigotengine.boot.SpigotPlugin;
 import org.bukkit.Bukkit;

@@ -1,6 +1,7 @@
 package net.echo.spigotengine.listener;
 
 import net.echo.spigotengine.boot.SpigotPlugin;
+import net.echo.spigotengine.listener.impl.BetterListener;
 import net.echo.spigotengine.utils.Initializer;
 
 public class ListenerHandler<P extends SpigotPlugin<?>> {

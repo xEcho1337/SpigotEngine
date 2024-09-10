@@ -4,6 +4,7 @@ import net.echo.spigotengine.boot.PluginLoader;
 import net.echo.spigotengine.boot.SpigotPlugin;
 import net.echo.spigotengine.data.UserData;
 import net.echo.spigotengine.data.loader.DataLoader;
+import net.echo.spigotengine.database.QueryBuilder;
 
 public final class Example extends SpigotPlugin<UserData> {
 
@@ -14,6 +15,13 @@ public final class Example extends SpigotPlugin<UserData> {
     @Override
     public DataLoader<UserData> getDataLoader() {
         return null;
+    }
+
+    @Override
+    public void enable() {
+        // QueryBuilder.table("users").update("name", "xEcho1337", "uuid", "ciao").where("name = xEcho1338").build();
+        // QueryBuilder.table("users").insert("name", "uuid").values("xEcho1337", "ciao").build();
+        // QueryBuilder.table("users").select("name", "uuid").where("name = xEcho1337").build();
     }
 
     @Override
