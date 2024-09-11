@@ -5,7 +5,6 @@ import net.echo.spigotengine.boot.SpigotPlugin;
 
 import java.io.IOException;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.function.Consumer;
 
 /**
@@ -13,30 +12,28 @@ import java.util.function.Consumer;
  * Useful to register all commands or all listeners all at once.
  *
  * @author echo
- * @since 1.0
+ * @since 1.0.0
  */
-public class Initializer<T> {
+public class Initializer {
 
-    public static <T> Initializer<T> create(Class<T> type) {
-        return new Initializer<>();
-    }
-
-    public <P extends SpigotPlugin<?>> void consumeAll(P plugin, String path, Consumer<T> consumer) {
+    public static <T, P extends SpigotPlugin<?>> void consumeAll(Class<T> type, P plugin, String path, Consumer<T> consumer) {
         try {
             ClassPath.from(plugin.getClass().getClassLoader())
                     .getAllClasses()
                     .stream()
                     .filter(info -> info.getPackageName().startsWith(path))
-                    .forEach(info -> consumeClassInfo(plugin, info, consumer));
+                    .forEach(info -> consumeClassInfo(type, plugin, info, consumer));
         } catch (IOException e) {
             e.printStackTrace(System.err);
         }
     }
 
     @SuppressWarnings("all")
-    private <P extends SpigotPlugin<?>> void consumeClassInfo(P plugin, ClassPath.ClassInfo info, Consumer<T> consumer) {
+    private static <T, P extends SpigotPlugin<?>> void consumeClassInfo(Class<T> type, P plugin, ClassPath.ClassInfo info, Consumer<T> consumer) {
         try {
             Class<?> clazz = info.load();
+
+            if (!type.isAssignableFrom(clazz)) return;
 
             try {
                 // Try to find the no-arg constructor

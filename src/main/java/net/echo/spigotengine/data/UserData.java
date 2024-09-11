@@ -7,7 +7,7 @@ import java.util.UUID;
  * This class should be extended by your player data implementation.
  *
  * @author echo
- * @since 1.0
+ * @since 1.0.0
  */
 public class UserData {
 

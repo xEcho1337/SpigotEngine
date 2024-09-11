@@ -16,7 +16,7 @@ import org.bukkit.Bukkit;
  * enabling, disabling, and loading the plugin.
  *
  * @author echo
- * @since 1.0
+ * @since 1.0.0
  */
 public abstract class SpigotPlugin<D extends UserData> {
 

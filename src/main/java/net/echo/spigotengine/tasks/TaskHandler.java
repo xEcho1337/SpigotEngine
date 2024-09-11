@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
  * Class used for handling tasks.
  *
  * @author echo
- * @since 1.0
+ * @since 1.0.0
  */
 public class TaskHandler<P extends SpigotPlugin<?>> {
 
@@ -35,7 +35,7 @@ public class TaskHandler<P extends SpigotPlugin<?>> {
      * Registers all the tasks in the specified path.
      */
     public void registerAll(String path) {
-        Initializer.create(Runnable.class).consumeAll(plugin, path, this::register);
+        Initializer.consumeAll(Runnable.class, plugin, path, this::register);
     }
 
     /**

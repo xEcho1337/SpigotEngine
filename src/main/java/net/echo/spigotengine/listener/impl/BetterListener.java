@@ -8,7 +8,7 @@ import org.bukkit.event.Listener;
  * A shortcut to easily implements listeners.
  *
  * @author echo
- * @since 1.0
+ * @since 1.0.0
  */
 public class BetterListener<I extends SpigotPlugin<?>> implements Listener {
 

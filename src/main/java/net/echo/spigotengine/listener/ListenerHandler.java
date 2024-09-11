@@ -4,6 +4,12 @@ import net.echo.spigotengine.boot.SpigotPlugin;
 import net.echo.spigotengine.listener.impl.BetterListener;
 import net.echo.spigotengine.utils.Initializer;
 
+/**
+ * Class used for handling listeners.
+ *
+ * @author echo
+ * @since 1.0.0
+ */
 public class ListenerHandler<P extends SpigotPlugin<?>> {
 
     private final P plugin;
@@ -12,11 +18,19 @@ public class ListenerHandler<P extends SpigotPlugin<?>> {
         this.plugin = plugin;
     }
 
+    /**
+     * Creates an instance of the listener handler.
+     *
+     * @param plugin the parent plugin
+     */
     public static <T extends SpigotPlugin<?>> ListenerHandler<T> create(T plugin) {
         return new ListenerHandler<>(plugin);
     }
 
+    /**
+     * Registers all the listeners in the specified path.
+     */
     public void registerAll(String path) {
-        Initializer.create(BetterListener.class).consumeAll(plugin, path, BetterListener::load);
+        Initializer.consumeAll(BetterListener.class, plugin, path, BetterListener::load);
     }
 }

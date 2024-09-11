@@ -14,7 +14,7 @@ import java.util.Map;
  * The base class for all commands.
  *
  * @author echo
- * @since 1.0
+ * @since 1.0.0
  */
 public class BaseCommand<P extends SpigotPlugin<?>> {
 

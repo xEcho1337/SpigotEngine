@@ -15,7 +15,7 @@ import java.util.function.Consumer;
  * A thread-safe container for player data.
  *
  * @author echo
- * @since 1.0
+ * @since 1.0.0
  */
 public class DataContainer<D extends UserData> {
 
