@@ -8,25 +8,24 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.PARAMETER)
 public @interface Param {
+
     /**
-     * Name of the parameter
+     * The name of the parameter.
      */
     String name();
 
     /**
-     * Makes it so the rest of arguments in a command
-     * are connected together after concatted is found
+     * If true, the rest of the arguments get concatenated together.
      */
     boolean concated() default false;
 
     /**
-     * Checks to see if a parameter is required
+     * Checks to see if a parameter is required.
      */
     boolean required() default true;
 
     /**
-     * Used as the default value if required is false
-     * and no parameter parse is provided.
+     * The default value if required is false and the value is null.
      */
     String defaultValue() default "";
 }

@@ -1,6 +1,6 @@
 package net.echo.spigotengine.boot;
 
-import net.echo.spigotengine.commandsv2.CommandHandler;
+import net.echo.spigotengine.commands.CommandHandler;
 import net.echo.spigotengine.data.UserData;
 import net.echo.spigotengine.data.container.DataContainer;
 import net.echo.spigotengine.data.listeners.AccessListener;

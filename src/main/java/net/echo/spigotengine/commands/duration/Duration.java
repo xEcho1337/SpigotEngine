@@ -1,9 +1,4 @@
 package net.echo.spigotengine.commands.duration;
 
-import lombok.Data;
-
-@Data
-public class Duration {
-    private final String parsed;
-    private final long time;
+public record Duration(long time) {
 }
