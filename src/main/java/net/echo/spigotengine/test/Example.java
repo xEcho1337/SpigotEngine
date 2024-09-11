@@ -1,4 +1,4 @@
-package net.echo.spigotengine;
+package net.echo.spigotengine.test;
 
 import net.echo.spigotengine.boot.PluginLoader;
 import net.echo.spigotengine.boot.SpigotPlugin;
@@ -7,18 +7,25 @@ import net.echo.spigotengine.data.loader.DataLoader;
 
 public final class Example extends SpigotPlugin<UserData> {
 
+    private final PlayerDataLoader dataLoader = new PlayerDataLoader();
+
     public Example(PluginLoader<?> pluginLoader) {
         super(pluginLoader);
     }
 
     @Override
-    public DataLoader<UserData> getDataLoader() {
-        return null;
+    public void enable() {
+        super.enable();
     }
 
     @Override
-    public void enable() {
+    public void disable() {
+        super.disable();
+    }
 
+    @Override
+    public DataLoader<UserData> getDataLoader() {
+        return dataLoader;
     }
 
     @Override
@@ -33,6 +40,6 @@ public final class Example extends SpigotPlugin<UserData> {
 
     @Override
     public void registerTasks() {
-        taskHandler.registerAll("net.echo.tasks");
+        taskHandler.registerAll("net.echo.spigot.tasks");
     }
 }

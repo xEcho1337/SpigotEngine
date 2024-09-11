@@ -38,7 +38,7 @@ public class AccessListener extends BetterListener<SpigotPlugin<?>> {
         }
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerQuit(PlayerQuitEvent event) {
         plugin.getContainer().unload(event.getPlayer());
     }

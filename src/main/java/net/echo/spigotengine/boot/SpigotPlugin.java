@@ -67,6 +67,7 @@ public abstract class SpigotPlugin<D extends UserData> {
 
         registerListeners();
         registerCommands();
+        registerTasks();
     }
 
     /**

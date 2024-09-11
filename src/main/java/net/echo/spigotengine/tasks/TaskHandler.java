@@ -5,9 +5,14 @@ import net.echo.spigotengine.boot.SpigotPlugin;
 import net.echo.spigotengine.utils.Initializer;
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitScheduler;
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Class used for handling tasks.
+ *
+ * @author echo
+ * @since 1.0
+ */
 public class TaskHandler<P extends SpigotPlugin<?>> {
 
     private static final BukkitScheduler executor = Bukkit.getScheduler();
@@ -17,24 +22,43 @@ public class TaskHandler<P extends SpigotPlugin<?>> {
         this.plugin = plugin;
     }
 
+    /**
+     * Creates an instance of the task handler.
+     *
+     * @param plugin the parent plugin
+     */
     public static <T extends SpigotPlugin<?>> TaskHandler<T> create(T plugin) {
         return new TaskHandler<>(plugin);
     }
 
+    /**
+     * Registers all the tasks in the specified path.
+     */
     public void registerAll(String path) {
         Initializer.create(Runnable.class).consumeAll(plugin, path, this::register);
     }
 
+    /**
+     * Submits a task to run it later.
+     */
     public <T extends Runnable> void submit(@NotNull T task, long delay) {
         Preconditions.checkNotNull(task);
         executor.runTaskLater(plugin.getLoader(), task, delay);
     }
 
+    /**
+     * Submits a task to run it later asynchronously.
+     */
     public <T extends Runnable> void submitAsync(@NotNull T task, long delay) {
         Preconditions.checkNotNull(task);
         executor.runTaskLaterAsynchronously(plugin.getLoader(), task, delay);
     }
 
+    /**
+     * Registers a task to be executed.
+     *
+     * @param task the task
+     */
     public <T extends Runnable> void register(@NotNull T task) {
         Preconditions.checkNotNull(task);
 

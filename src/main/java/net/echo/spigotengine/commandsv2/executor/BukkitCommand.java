@@ -1,6 +1,5 @@
 package net.echo.spigotengine.commandsv2.executor;
 
-import net.echo.spigotengine.ExampleLoader;
 import net.echo.spigotengine.boot.SpigotPlugin;
 import net.echo.spigotengine.commandsv2.BaseCommand;
 import net.echo.spigotengine.commandsv2.CommandHandler;

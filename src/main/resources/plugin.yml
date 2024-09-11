@@ -1,3 +1,3 @@
 name: SpigotEngine
 version: '${version}'
-main: net.echo.spigotengine.ExampleLoader
+main: net.echo.spigotengine.test.ExampleLoader

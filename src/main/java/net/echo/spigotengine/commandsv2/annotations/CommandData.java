@@ -19,7 +19,7 @@ public @interface CommandData {
     /**
      * The permission required to run the command
      */
-    String permission();
+    String permission() default "";
 
     /**
      * The filter of the sender, see {@link SenderFilter}
