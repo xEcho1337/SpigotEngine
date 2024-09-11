@@ -3,7 +3,7 @@ name: Release Build
 on:
   push:
     tags:
-      - 'v*.*.*'  # Ogni volta che viene creato un tag con questo pattern, eseguirà l'azione.
+      - 'v*.*.*'
 
 jobs:
   release:
