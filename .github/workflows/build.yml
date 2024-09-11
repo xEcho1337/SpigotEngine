@@ -3,7 +3,7 @@ name: Build and Test
 on:
   push:
     branches:
-      - main  # Sostituisci con il nome del branch che vuoi monitorare
+      - master
 
 jobs:
   build:
