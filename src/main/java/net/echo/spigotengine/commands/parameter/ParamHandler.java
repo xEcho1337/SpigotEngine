@@ -1,7 +1,7 @@
 package net.echo.spigotengine.commands.parameter;
 
-import net.echo.spigotengine.commands.processor.impl.*;
 import net.echo.spigotengine.commands.processor.Processor;
+import net.echo.spigotengine.commands.processor.impl.*;
 import org.bukkit.command.CommandSender;
 
 import java.util.HashMap;
