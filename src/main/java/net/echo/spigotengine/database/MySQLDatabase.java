@@ -64,8 +64,8 @@ public abstract class MySQLDatabase {
         return null;
     }
 
-    public CompletableFuture<ResultSet> executeQueryAsync(String query) {
-        return CompletableFuture.supplyAsync(() -> executeQuery(query), getExecutor());
+    public CompletableFuture<ResultSet> executeQueryAsync(String query, Object... params) {
+        return CompletableFuture.supplyAsync(() -> executeQuery(query, params), getExecutor());
     }
 
     public int executeUpdate(String query, Object... params) {
