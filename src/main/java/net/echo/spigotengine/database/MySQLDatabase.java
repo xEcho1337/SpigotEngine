@@ -1,6 +1,5 @@
 package net.echo.spigotengine.database;
 
-import net.echo.spigotengine.database.connectors.DatabaseCredentials;
 import net.echo.spigotengine.database.functions.StatementConsumer;
 
 import java.sql.*;
@@ -15,24 +14,24 @@ import java.util.concurrent.Executor;
  */
 public abstract class MySQLDatabase {
 
-    private final DatabaseCredentials credentials;
-    private final Executor executor;
+    public abstract Executor getExecutor();
 
-	public MySQLDatabase(DatabaseCredentials credentials, Executor executor) {
-		this.credentials = credentials;
-        this.executor = executor;
-	}
+    public abstract String getHost();
 
-    public Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(
-                credentials.getJDBC(),
-                credentials.getUsername(),
-                credentials.getPassword()
-        );
+    public abstract int getPort();
+
+    public abstract String getDatabase();
+
+    public abstract String getUser();
+
+    public abstract String getPassword();
+
+    public String getUrl() {
+        return "jdbc:mysql://" + getHost() + ":" + getPort() + "/" + getDatabase();
     }
 
-    public Executor getExecutor() {
-        return executor;
+    public Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(getUrl(), getUser(), getPassword());
     }
 
     public <T> T execute(String query, StatementConsumer<T> function) {
